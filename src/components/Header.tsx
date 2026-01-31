@@ -9,6 +9,7 @@ const navItems = [
     { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
     { href: "#experience", label: "Experience" },
+    { href: "/blog", label: "Blog" },
     { href: "#contact", label: "Contact" },
 ];
 
@@ -28,19 +29,24 @@ export default function Header() {
 
                 {/* Desktop Navigation */}
                 <ul className="hidden md:flex items-center gap-8">
-                    {navItems.map((item) => (
-                        <li key={item.href}>
-                            <Link
-                                href={item.href}
-                                className={`text-sm transition-colors ${pathname === item.href
-                                    ? "text-[var(--color-text)]"
-                                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-                                    }`}
-                            >
-                                {item.label}
-                            </Link>
-                        </li>
-                    ))}
+                    {navItems.map((item) => {
+                        const href = item.href.startsWith("#") && pathname !== "/"
+                            ? `/${item.href}`
+                            : item.href;
+                        return (
+                            <li key={item.href}>
+                                <Link
+                                    href={href}
+                                    className={`text-sm transition-colors ${pathname === item.href
+                                        ? "text-[var(--color-text)]"
+                                        : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                                        }`}
+                                >
+                                    {item.label}
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
 
                 {/* Mobile Menu Button */}
@@ -71,20 +77,25 @@ export default function Header() {
             {isMenuOpen && (
                 <div className="md:hidden bg-[var(--color-bg)] border-b border-[var(--color-border)]">
                     <ul className="container py-4 space-y-4">
-                        {navItems.map((item) => (
-                            <li key={item.href}>
-                                <Link
-                                    href={item.href}
-                                    className={`block text-lg ${pathname === item.href
-                                        ? "text-[var(--color-text)]"
-                                        : "text-[var(--color-text-muted)]"
-                                        }`}
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {item.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {navItems.map((item) => {
+                            const href = item.href.startsWith("#") && pathname !== "/"
+                                ? `/${item.href}`
+                                : item.href;
+                            return (
+                                <li key={item.href}>
+                                    <Link
+                                        href={href}
+                                        className={`block text-lg ${pathname === item.href
+                                            ? "text-[var(--color-text)]"
+                                            : "text-[var(--color-text-muted)]"
+                                            }`}
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
             )}
