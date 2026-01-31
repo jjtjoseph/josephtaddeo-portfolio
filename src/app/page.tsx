@@ -18,7 +18,7 @@ export default function Home() {
                     HERO SECTION
                     Full-height hero with strong visual impact
                 ═══════════════════════════════════════════════════════════════ */}
-        <section id="hero" className="min-h-[90vh] flex items-center">
+        <section id="hero" className="min-h-[90vh] flex items-center relative" style={{ background: 'radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.06) 0%, transparent 50%)' }}>
           <div className="container">
             <div className="max-w-4xl">
               <p className="text-[var(--color-accent)] text-sm uppercase tracking-[0.2em] mb-8 animate-fade-in">
