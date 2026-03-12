@@ -75,4 +75,35 @@ I started building tools to solve my own problems. What began as simple Python s
 Now I'm building full-stack applications, working with AI/ML, and shipping production software. The operations background gives me perspective most pure engineers lack.
         `,
     },
+    {
+        slug: "",
+        title: "From Operations to Software Engineering",
+        date: "2025-01-15",
+        excerpt: "My journey from package handling at FedEx to building production software at a luxury consignment business.",
+        tags: ["Career", "Operations", "Software Engineering"],
+        content: `
+## Starting Point
+
+I started my career handling packages at FedEx—high-volume, tight deadlines, operational precision required every day.
+
+## The Pivot
+
+At LuxeSwap, I saw manual processes that were begging to be automated:
+- Hours spent copying data between spreadsheets
+- Repetitive HTML formatting for eBay listings
+- Error-prone fee calculations
+
+I started building tools to solve my own problems. What began as simple Python scripts evolved into full applications.
+
+## Lessons Learned
+
+1. **Domain expertise matters.** Understanding the business problem deeply made my solutions 10x more effective.
+2. **Start with the bottleneck.** Don't automate everything—automate the thing that's actually slowing people down.
+3. **Ship early, iterate fast.** My first tools were ugly but functional. User feedback shaped every version.
+
+## Current Focus
+
+Now I'm building full-stack applications, working with AI/ML, and shipping production software. The operations background gives me perspective most pure engineers lack.
+        `,
+    },
 ];

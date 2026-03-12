@@ -2,7 +2,7 @@
 
 /* ============================================
    DESIGN TOKENS
-   Tech Minimalism + Post-Modern Future Luxury
+   Post-Modern Future Luxury
    ============================================ */
 
 :root {
@@ -10,22 +10,25 @@
   --color-bg: #0a0a0a;
   --color-bg-elevated: #111111;
   --color-bg-subtle: #1a1a1a;
-  
+
   --color-text: #fafafa;
   --color-text-muted: #a1a1a1;
   --color-text-subtle: #6b6b6b;
-  
+
   --color-accent: #a8b5c4;
   --color-accent-muted: rgba(168, 181, 196, 0.15);
-  
+  --color-accent-glow: rgba(168, 181, 196, 0.08);
+
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-hover: rgba(255, 255, 255, 0.15);
-  
+
   /* Typography Scale */
   --font-display: var(--font-space-grotesk), system-ui, sans-serif;
   --font-body: var(--font-outfit), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
-  
+  --font-hero: var(--font-fraunces), Georgia, serif;
+  --font-section: var(--font-manrope), system-ui, sans-serif;
+
   /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -35,16 +38,17 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
   --space-4xl: 6rem;
-  
+
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
-  
+
   /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
   --radius-full: 9999px;
 }
 
@@ -81,7 +85,12 @@ body {
    TYPOGRAPHY
    ============================================ */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 500;
   line-height: 1.2;
@@ -131,6 +140,26 @@ code {
 }
 
 /* ============================================
+   HERO TYPOGRAPHY (Fraunces)
+   ============================================ */
+
+.hero-name {
+  font-family: var(--font-hero);
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Section headers use Manrope */
+.section-label {
+  font-family: var(--font-section);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ============================================
    UTILITY CLASSES
    ============================================ */
 
@@ -156,15 +185,45 @@ code {
 
 /* Subtle border glow on hover */
 .card-hover {
-  transition: transform var(--transition-base), 
-              box-shadow var(--transition-base),
-              border-color var(--transition-base);
+  transition: transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .card-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   border-color: var(--color-border-hover);
+}
+
+/* Glassmorphism variant for featured cards */
+.glass-card {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 181, 196, 0.12);
+}
+
+.glass-card:hover {
+  border-color: rgba(168, 181, 196, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 60px var(--color-accent-glow);
+}
+
+/* Gradient accent line */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-accent) 50%,
+      transparent 100%);
+  opacity: 0.3;
+}
+
+/* Metric number styling */
+.metric-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-accent);
 }
 
 /* ============================================
@@ -176,9 +235,56 @@ code {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
   }
 }
 
@@ -186,15 +292,95 @@ code {
   animation: fadeIn 0.6s ease forwards;
 }
 
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.5s ease forwards;
+}
+
+/* Scroll-triggered animation (applied via IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children animation */
+.stagger-children>* {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.stagger-children.visible>*:nth-child(1) {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children.visible>*:nth-child(2) {
+  transition-delay: 80ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children.visible>*:nth-child(3) {
+  transition-delay: 160ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children.visible>*:nth-child(4) {
+  transition-delay: 240ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children.visible>*:nth-child(5) {
+  transition-delay: 320ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children.visible>*:nth-child(6) {
+  transition-delay: 400ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children.visible>*:nth-child(7) {
+  transition-delay: 480ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
+  }
+
+  .reveal,
+  .stagger-children>* {
+    opacity: 1;
+    transform: none;
   }
 }

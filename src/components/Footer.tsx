@@ -11,7 +11,7 @@ const socialLinks = [
         ),
     },
     {
-        href: "https://linkedin.com/in/josephtaddeo",
+        href: "https://linkedin.com/in/joe-taddeo-25160019b",
         label: "LinkedIn",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

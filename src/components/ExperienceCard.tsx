@@ -18,10 +18,16 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                 <p className="text-[var(--color-accent)]">{experience.role}</p>
             </div>
 
-            <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--color-text-subtle)] mb-4">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--color-text-subtle)] mb-3">
                 <span>{experience.period}</span>
                 <span>{experience.location}</span>
             </div>
+
+            {experience.context && (
+                <p className="text-sm text-[var(--color-text-subtle)] italic mb-4">
+                    {experience.context}
+                </p>
+            )}
 
             <ul className="space-y-2">
                 {experience.bullets.map((bullet, i) => (

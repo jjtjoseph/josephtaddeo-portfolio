@@ -12,6 +12,7 @@
 | **Location** | New York, NY (from Long Island) |
 | **Email** | jjtjoseph1@gmail.com |
 | **Phone** | 516-669-9372 |
+| **Portfolio** | josephtaddeo.com |
 | **GitHub** | github.com/jjtjoseph |
 | **LinkedIn** | linkedin.com/in/josephtaddeo (verify URL) |
 

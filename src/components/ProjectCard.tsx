@@ -7,32 +7,53 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+    const isFeatured = project.featured;
+
     return (
-        <article className="group bg-[var(--color-bg-elevated)] border border-[var(--color-border)] rounded-lg card-hover overflow-hidden">
+        <article
+            className={`group overflow-hidden rounded-xl ${isFeatured
+                    ? "glass-card md:col-span-2"
+                    : "bg-[var(--color-bg-elevated)] border border-[var(--color-border)] card-hover"
+                }`}
+        >
             {/* Project Image */}
             {project.image && (
-                <div className="relative aspect-video overflow-hidden">
+                <div className={`relative overflow-hidden ${isFeatured ? "aspect-[2.4/1]" : "aspect-video"}`}>
                     <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    {/* Gradient overlay for featured */}
+                    {isFeatured && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+                    )}
                 </div>
             )}
 
-            <div className="p-6 flex flex-col">
+            <div className={`p-6 flex flex-col ${isFeatured ? "md:p-8" : ""}`}>
                 <div className="mb-4">
-                    <p className="text-xs text-[var(--color-text-subtle)] uppercase tracking-wider mb-2">
+                    <p className="text-xs text-[var(--color-text-subtle)] uppercase tracking-wider mb-2 section-label">
                         {project.type}
                     </p>
-                    <h3 className="text-xl font-medium mb-3 group-hover:text-[var(--color-accent)] transition-colors">
+                    <h3 className={`font-medium mb-3 group-hover:text-[var(--color-accent)] transition-colors ${isFeatured ? "text-2xl md:text-3xl" : "text-xl"
+                        }`}>
                         {project.title}
                     </h3>
                     <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
                         {project.description}
                     </p>
                 </div>
+
+                {/* Business Impact Callout */}
+                {project.businessImpact && (
+                    <div className="mb-4 px-4 py-3 rounded-lg bg-[var(--color-accent-muted)] border border-[rgba(168,181,196,0.1)]">
+                        <p className="text-sm text-[var(--color-accent)] font-medium">
+                            ↗ {project.businessImpact}
+                        </p>
+                    </div>
+                )}
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -47,8 +68,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 </div>
 
                 {/* Key Metrics */}
-                <ul className="text-sm text-[var(--color-text-muted)] space-y-1 mb-4">
-                    {project.metrics.slice(0, 3).map((metric, i) => (
+                <ul className="text-sm text-[var(--color-text-muted)] space-y-1.5 mb-4">
+                    {project.metrics.map((metric, i) => (
                         <li key={i} className="flex items-start gap-2">
                             <span className="text-[var(--color-accent)] mt-1.5 w-1 h-1 rounded-full bg-current flex-shrink-0" />
                             {metric}
@@ -57,13 +78,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 </ul>
 
                 {/* Links */}
-                <div className="flex gap-4 pt-4 border-t border-[var(--color-border)]">
+                <div className="flex gap-4 pt-4 border-t border-[var(--color-border)] mt-auto">
                     {project.liveUrl && (
                         <Link
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+                            className="text-sm text-[var(--color-accent)] hover:text-[var(--color-text)] transition-colors font-medium"
                         >
                             View Live →
                         </Link>

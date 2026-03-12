@@ -5,7 +5,7 @@ import { education, skills } from "@/data/experience";
 export const metadata = {
     title: "About | Joseph Taddeo",
     description:
-        "Operations and software professional with experience building internal tools, automating workflows, and coordinating cross-functional work.",
+        "Full-stack software engineer who builds and owns production systems end to end. Sole technical hire at a $2.5M+ luxury e-commerce operation.",
 };
 
 export default function AboutPage() {
@@ -19,9 +19,8 @@ export default function AboutPage() {
                     <div className="max-w-3xl mb-16">
                         <h1 className="mb-6">About</h1>
                         <p className="text-xl text-[var(--color-text-muted)] leading-relaxed">
-                            Operations and software professional with experience building
-                            internal tools, automating workflows, and coordinating
-                            cross-functional work at a growing business.
+                            Full-stack software engineer who builds and owns production
+                            systems end to end.
                         </p>
                     </div>
 
@@ -30,17 +29,16 @@ export default function AboutPage() {
                         <h2 className="text-lg font-medium mb-4">Background</h2>
                         <div className="space-y-4 text-[var(--color-text-muted)]">
                             <p>
-                                I built automation systems that reduced processing time by 80%
-                                and increased throughput by 20%. I created a full-stack
-                                marketing website for a luxury consignment business. Currently
-                                focused on roles at the intersection of operations, technology,
-                                and fast-paced startup environments.
+                                Sole technical hire at a $2.5M+ luxury e-commerce operation.
+                                Designed, built, and deployed a 75,000+ line production platform,
+                                AI-powered automation suite, internal CRM with 17 API endpoints,
+                                and proprietary pricing intelligence system — all independently.
                             </p>
                             <p>
-                                My approach combines hands-on technical work with genuine
-                                curiosity about how operations actually function. I&apos;m most
-                                engaged when building tools that solve real problems for the
-                                people who use them.
+                                Systems built during tenure contributed to $350K+ year-over-year
+                                revenue growth. I build the entire technical stack from scratch —
+                                web platform, CRM, data pipelines, automation — and train the
+                                team to use it.
                             </p>
                         </div>
                     </section>
@@ -54,6 +52,11 @@ export default function AboutPage() {
                             <p className="text-sm text-[var(--color-text-subtle)] mt-2">
                                 {education.period}
                             </p>
+                            {education.capstone && (
+                                <p className="text-sm text-[var(--color-accent)] mt-3">
+                                    Capstone: {education.capstone}
+                                </p>
+                            )}
                         </div>
                     </section>
 
@@ -78,25 +81,6 @@ export default function AboutPage() {
                                     </div>
                                 </div>
                             ))}
-                        </div>
-                    </section>
-
-                    {/* Languages */}
-                    <section className="max-w-3xl">
-                        <h2 className="text-lg font-medium mb-4">Languages</h2>
-                        <div className="flex gap-6 text-[var(--color-text-muted)]">
-                            <div>
-                                <span className="font-medium text-[var(--color-text)]">English</span>
-                                <span className="text-sm ml-2">— Fluent</span>
-                            </div>
-                            <div>
-                                <span className="font-medium text-[var(--color-text)]">Italian</span>
-                                <span className="text-sm ml-2">— Basic</span>
-                            </div>
-                            <div>
-                                <span className="font-medium text-[var(--color-text)]">Ukrainian</span>
-                                <span className="text-sm ml-2">— Elementary</span>
-                            </div>
                         </div>
                     </section>
                 </div>

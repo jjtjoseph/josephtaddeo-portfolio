@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Outfit, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Outfit, JetBrains_Mono, Fraunces, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -21,24 +21,38 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Joseph Taddeo | Operations & Software Engineer",
+  title: "Joseph Taddeo | Full-Stack Software Engineer",
   description:
-    "Operations and software professional building internal tools, automating workflows, and coordinating cross-functional work. Based in New York.",
+    "Full-stack software engineer who builds and owns production systems end to end. Designed, built, and deployed a 75,000+ line production platform, AI-powered automation suite, internal CRM, and proprietary pricing intelligence system — all independently.",
   keywords: [
     "Joseph Taddeo",
     "Software Engineer",
-    "Operations",
+    "Full-Stack Developer",
     "React",
     "Python",
+    "Node.js",
     "Automation",
+    "Brooklyn",
     "New York",
   ],
   authors: [{ name: "Joseph Taddeo" }],
   openGraph: {
-    title: "Joseph Taddeo | Operations & Software Engineer",
+    title: "Joseph Taddeo | Full-Stack Software Engineer",
     description:
-      "Operations and software professional building internal tools, automating workflows, and coordinating cross-functional work.",
+      "Sole technical hire at a $2.5M+ luxury e-commerce operation. 75,000+ lines of production code. AI-powered automation. Internal CRM. Proprietary pricing intelligence.",
     url: "https://josephtaddeo.com",
     siteName: "Joseph Taddeo",
     locale: "en_US",
@@ -46,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Joseph Taddeo | Operations & Software Engineer",
+    title: "Joseph Taddeo | Full-Stack Software Engineer",
     description:
-      "Operations and software professional building internal tools and automating workflows.",
+      "Full-stack software engineer who builds and owns production systems end to end.",
   },
   robots: {
     index: true,
@@ -72,12 +86,12 @@ export default function RootLayout({
               "@type": "Person",
               name: "Joseph Taddeo",
               url: "https://josephtaddeo.com",
-              jobTitle: "Operations & Software Engineer",
+              jobTitle: "Full-Stack Software Engineer",
               email: "jjtjoseph1@gmail.com",
               telephone: "516-669-9372",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "New York",
+                addressLocality: "Brooklyn",
                 addressRegion: "NY",
                 addressCountry: "US",
               },
@@ -87,14 +101,14 @@ export default function RootLayout({
               },
               sameAs: [
                 "https://github.com/jjtjoseph",
-                "https://linkedin.com/in/josephtaddeo",
+                "https://linkedin.com/in/joe-taddeo-25160019b",
               ],
             }),
           }}
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${outfit.variable} ${jetbrainsMono.variable} ${fraunces.variable} ${manrope.variable} antialiased`}
       >
         {children}
         <Analytics />
