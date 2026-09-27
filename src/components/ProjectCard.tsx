@@ -11,6 +11,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     return (
         <article
+            id={project.id}
             className={`group overflow-hidden rounded-xl ${isFeatured
                     ? "glass-card md:col-span-2"
                     : "bg-[var(--color-bg-elevated)] border border-[var(--color-border)] card-hover"
@@ -77,7 +78,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     ))}
                 </ul>
 
+                {project.highlights.length > 0 && (
+                    <details className="mb-4 text-sm text-[var(--color-text-muted)]">
+                        <summary className="cursor-pointer py-2 text-[var(--color-accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
+                            How I built it
+                        </summary>
+                        <ul className="list-disc pl-5 space-y-2 pt-2">
+                            {project.highlights.map((highlight) => (
+                                <li key={highlight}>{highlight}</li>
+                            ))}
+                        </ul>
+                    </details>
+                )}
+
                 {/* Links */}
+                {(project.liveUrl || project.githubUrl) && (
                 <div className="flex gap-4 pt-4 border-t border-[var(--color-border)] mt-auto">
                     {project.liveUrl && (
                         <Link
@@ -100,6 +115,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                         </Link>
                     )}
                 </div>
+                )}
             </div>
         </article>
     );

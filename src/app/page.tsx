@@ -7,6 +7,7 @@ import ExperienceCard from "@/components/ExperienceCard";
 import ContactForm from "@/components/ContactForm";
 import { projects } from "@/data/projects";
 import { experience, education, skills } from "@/data/experience";
+import { profile } from "@/data/profile";
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
           <div className="container relative">
             <div className="max-w-4xl">
               <p className="text-[var(--color-accent)] text-sm uppercase tracking-[0.2em] mb-8 animate-fade-in section-label">
-                Software Engineer
+                Software &amp; GTM Engineer · New York
               </p>
               <h1
                 className="text-5xl md:text-7xl lg:text-8xl mb-8 animate-fade-in hero-name"
@@ -42,15 +43,13 @@ export default function Home() {
                 className="text-xl md:text-2xl text-[var(--color-text-muted)] leading-relaxed mb-6 max-w-2xl animate-fade-in"
                 style={{ animationDelay: "200ms" }}
               >
-                I ship production systems solo — from architecture to deployment to user training.
+                {profile.headline}
               </p>
               <p
                 className="text-base text-[var(--color-text-subtle)] leading-relaxed mb-16 max-w-2xl animate-fade-in"
                 style={{ animationDelay: "250ms" }}
               >
-                Sole technical hire at a $2.5M+ luxury e-commerce operation. 75,000+ lines of
-                production code. AI-powered automation. Internal CRM. Proprietary pricing intelligence.
-                Brooklyn, NY.
+                {profile.introduction}
               </p>
               <div
                 className="flex flex-col sm:flex-row gap-4 animate-fade-in"
@@ -63,14 +62,12 @@ export default function Home() {
                 >
                   View Projects
                 </Link>
-                <a
-                  href="https://luxeswap.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="#experience"
                   className="inline-flex items-center justify-center px-8 py-4 border border-[var(--color-accent)] text-[var(--color-accent)] rounded-full font-medium hover:bg-[var(--color-accent-muted)] transition-all duration-300"
                 >
-                  See Live Work — luxeswap.com ↗
-                </a>
+                  Explore My Experience
+                </Link>
                 <a
                   href="/Joseph_Taddeo_Resume.pdf"
                   download
@@ -115,16 +112,10 @@ export default function Home() {
                 {/* Summary */}
                 <div>
                   <p className="text-xl md:text-2xl text-[var(--color-text-muted)] leading-relaxed mb-6">
-                    Full-stack software engineer who builds and owns production
-                    systems end to end.
+                    {profile.background}
                   </p>
                   <p className="text-[var(--color-text-muted)] leading-relaxed">
-                    Sole technical hire at a $2.5M+ luxury e-commerce operation.
-                    Designed, built, and deployed a 75,000+ line production platform,
-                    AI-powered automation suite, internal CRM with 17 API endpoints,
-                    and proprietary pricing intelligence system — all independently.
-                    Systems built during tenure contributed to $350K+ year-over-year
-                    revenue growth.
+                    {profile.previous}
                   </p>
                 </div>
               </div>
@@ -157,10 +148,10 @@ export default function Home() {
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { value: "75K+", label: "Lines of Production Code" },
-                      { value: "26K+", label: "Items Processed Annually" },
-                      { value: "750+", label: "Active Accounts Managed" },
-                      { value: "$350K+", label: "YoY Revenue Growth" },
+                      { value: "100Ks", label: "Borrowers processed at MoFin" },
+                      { value: "0 → 1", label: "Sole engineering ownership at two businesses" },
+                      { value: "95%", label: "Less listing preparation time at LuxeSwap" },
+                      { value: "$350K+", label: "LuxeSwap YoY revenue growth contributed to" },
                     ].map((stat) => (
                       <div key={stat.label} className="p-4 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] rounded-xl">
                         <p className="metric-value text-2xl mb-1">{stat.value}</p>
@@ -177,7 +168,7 @@ export default function Home() {
               <h3 className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-subtle)] mb-8 section-label">
                 Technical Skills
               </h3>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {skills.map((category) => (
                   <div key={category.name} className="p-5 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] rounded-xl">
                     <h4 className="text-sm font-medium mb-3 text-[var(--color-accent)]">
@@ -187,7 +178,7 @@ export default function Home() {
                       {category.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="text-xs text-[var(--color-text-muted)]"
+                          className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs text-[var(--color-text-muted)]"
                         >
                           {skill}
                         </span>
@@ -215,8 +206,8 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-light">Projects</h2>
             </div>
             <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mb-16">
-              Production systems built independently — from architecture to
-              deployment. Every project leads with its impact.
+              Lending intelligence, deal attribution, acquisition infrastructure,
+              and commerce software. The business problem behind each build.
             </p>
 
             <div className="grid gap-8 md:grid-cols-2">

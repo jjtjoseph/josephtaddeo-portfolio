@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Outfit, JetBrains_Mono, Fraunces, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { profile } from "@/data/profile";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -34,9 +35,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Joseph Taddeo | Full-Stack Software Engineer",
+  title: profile.title,
   description:
-    "Full-stack software engineer who builds and owns production systems end to end. Designed, built, and deployed a 75,000+ line production platform, AI-powered automation suite, internal CRM, and proprietary pricing intelligence system — all independently.",
+    profile.description,
   keywords: [
     "Joseph Taddeo",
     "Software Engineer",
@@ -45,14 +46,16 @@ export const metadata: Metadata = {
     "Python",
     "Node.js",
     "Automation",
-    "Brooklyn",
+    "GTM Engineering",
+    "Data Engineering",
+    "Real Estate Finance",
     "New York",
   ],
   authors: [{ name: "Joseph Taddeo" }],
   openGraph: {
-    title: "Joseph Taddeo | Full-Stack Software Engineer",
+    title: profile.title,
     description:
-      "Sole technical hire at a $2.5M+ luxury e-commerce operation. 75,000+ lines of production code. AI-powered automation. Internal CRM. Proprietary pricing intelligence.",
+      profile.description,
     url: "https://josephtaddeo.com",
     siteName: "Joseph Taddeo",
     locale: "en_US",
@@ -60,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Joseph Taddeo | Full-Stack Software Engineer",
+    title: profile.title,
     description:
-      "Full-stack software engineer who builds and owns production systems end to end.",
+      profile.description,
   },
   robots: {
     index: true,
@@ -86,12 +89,13 @@ export default function RootLayout({
               "@type": "Person",
               name: "Joseph Taddeo",
               url: "https://josephtaddeo.com",
-              jobTitle: "Full-Stack Software Engineer",
+              jobTitle: "GTM & Operations Engineer",
+              worksFor: { "@type": "Organization", name: "MoFin Lending Corporation" },
               email: "jjtjoseph1@gmail.com",
               telephone: "516-669-9372",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Brooklyn",
+                addressLocality: "New York",
                 addressRegion: "NY",
                 addressCountry: "US",
               },

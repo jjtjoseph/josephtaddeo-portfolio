@@ -2,6 +2,8 @@
 
 > **Purpose**: Comprehensive reference for AI-assisted portfolio website generation. Contains all verified facts, design preferences, and structural blueprints.
 
+> Historical brief. For the September 2026 update, use `src/data/profile.ts`, `src/data/experience.ts`, `src/data/projects.ts`, and `CONTENT_UPDATE_2026-09.md`. MoFin employment began April 2026; LuxeSwap ended April 2026. Earlier metrics and positioning below are retained as historical context.
+
 ---
 
 ## CONTACT & IDENTITY

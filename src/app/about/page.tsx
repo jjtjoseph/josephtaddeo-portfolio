@@ -1,11 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { education, skills } from "@/data/experience";
+import { profile } from "@/data/profile";
 
 export const metadata = {
     title: "About | Joseph Taddeo",
     description:
-        "Full-stack software engineer who builds and owns production systems end to end. Sole technical hire at a $2.5M+ luxury e-commerce operation.",
+        profile.description,
 };
 
 export default function AboutPage() {
@@ -19,8 +20,7 @@ export default function AboutPage() {
                     <div className="max-w-3xl mb-16">
                         <h1 className="mb-6">About</h1>
                         <p className="text-xl text-[var(--color-text-muted)] leading-relaxed">
-                            Full-stack software engineer who builds and owns production
-                            systems end to end.
+                            {profile.headline}
                         </p>
                     </div>
 
@@ -29,17 +29,12 @@ export default function AboutPage() {
                         <h2 className="text-lg font-medium mb-4">Background</h2>
                         <div className="space-y-4 text-[var(--color-text-muted)]">
                             <p>
-                                Sole technical hire at a $2.5M+ luxury e-commerce operation.
-                                Designed, built, and deployed a 75,000+ line production platform,
-                                AI-powered automation suite, internal CRM with 17 API endpoints,
-                                and proprietary pricing intelligence system — all independently.
+                                {profile.introduction}
                             </p>
                             <p>
-                                Systems built during tenure contributed to $350K+ year-over-year
-                                revenue growth. I build the entire technical stack from scratch —
-                                web platform, CRM, data pipelines, automation — and train the
-                                team to use it.
+                                {profile.background}
                             </p>
+                            <p>{profile.previous}</p>
                         </div>
                     </section>
 

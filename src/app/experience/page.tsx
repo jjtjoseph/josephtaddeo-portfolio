@@ -6,7 +6,7 @@ import { experience } from "@/data/experience";
 export const metadata = {
     title: "Experience | Joseph Taddeo",
     description:
-        "Professional experience in operations and software engineering, including work at LuxeSwap and FedEx.",
+        "Sole engineering ownership at MoFin Lending and LuxeSwap: finance data platforms, deal attribution, AI workflows, and revenue-generating software.",
 };
 
 export default function ExperiencePage() {

@@ -15,6 +15,47 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        id: "mofin-attribution",
+        title: "Deal Lifecycle & Attribution",
+        type: "MoFin · Commercial data infrastructure",
+        tech: ["Data Modeling", "Entity Resolution", "Pipedrive", "PlusVibe / Smartlead", "Semantic Analysis"],
+        description: "Built a centralized view of a deal’s path across data providers, lead-list generation, outreach agencies and sequencers, CRM, communications, and internal processing and underwriting records. Reconstructed historical journeys to connect participants and touchpoints with stage outcomes.",
+        metrics: ["Historical deal reconstruction at scale", "Connected email, call, text, CRM, and underwriting records", "Stage-level signals for engineering, sales, and borrower evaluation"],
+        highlights: ["Linked identifiable people and interactions across services", "Combined structured records with semantic and statistical analysis where needed", "Centralized record keeping and visibility into the deal lifecycle"],
+        businessImpact: "Made fragmented deal histories traceable and usable for evaluation across teams",
+        featured: true,
+    },
+    {
+        id: "mofin-intelligence",
+        title: "Borrower & Lending Intelligence",
+        type: "MoFin · Proprietary analytics platform",
+        tech: ["Python", "SQL", "PostgreSQL", "ETL", "Entity Resolution", "Web Scraping"],
+        description: "Combined SFRA and Forecasa records with Zillow market data, FRED mortgage-rate history, and internal borrower and loan-performance datasets. Built the processing and analysis that turn these sources into borrower-fit and financing-demand signals.",
+        metrics: ["Hundreds of thousands of borrowers processed", "External market data joined with internal historical performance", "Product rules and transaction patterns translated into outreach priorities"],
+        highlights: ["Resolved related borrower entities", "Reconstructed mortgage and transaction histories", "Built models of borrower fit and financing demand"],
+        businessImpact: "Gave sales a basis for identifying whom to contact, why, and when",
+    },
+    {
+        id: "mofin-outreach",
+        title: "Acquisition Infrastructure & Workflows",
+        type: "MoFin · Infrastructure and service integrations",
+        tech: ["Linux", "Postfix", "Cloudflare", "Clay", "Airtable", "Zapier", "Pipedrive"],
+        description: "Built proprietary outbound infrastructure from zero and connected enrichment, public-data processing, CRM records, and campaign delivery through internal codebases and server-side pipelines.",
+        metrics: ["Scaled from zero to hundreds of mailboxes", "Capacity to contact hundreds of thousands of leads monthly", "Resumable processing with deduplication and state tracking"],
+        highlights: ["Automated mailbox provisioning and deliverability monitoring", "Connected custom processing with business-facing tools", "Turned manual research and handoffs into repeatable workflows"],
+        businessImpact: "Created an owned foundation for scaling prospect research and outreach",
+    },
+    {
+        id: "mofin-web",
+        title: "Lending Website & Financial Tools",
+        type: "MoFin · Web development and quality engineering",
+        tech: ["Next.js", "React", "TypeScript", "Airtable", "Playwright", "Vitest"],
+        description: "Rebuilt the company’s Webflow site in Next.js and React, implementing financial calculators and validated lead capture. Added automated checks to preserve lending calculations, content, and interactions as the site changes.",
+        metrics: ["Financial calculators with testable business logic", "Validated lead capture connected to Airtable", "Automated content, visual, and interaction checks"],
+        highlights: ["Translated lending requirements into customer-facing tools", "Built regression checks for the migration", "Connected lead intake to the broader operations workflow"],
+        businessImpact: "Built a maintainable customer-facing foundation for lending inquiries",
+    },
+    {
         id: "luxeswap-website",
         title: "LuxeSwap Web Platform",
         type: "Full-stack production platform",
@@ -22,7 +63,7 @@ export const projects: Project[] = [
         description:
             "Built the company's entire web platform from zero in 6 weeks. The company had no website before this. Full-stack production system with live inventory integration, B2B lead generation, and 8-language internationalization.",
         metrics: [
-            "75,000+ lines of production code",
+            "Live inventory integration and B2B acquisition",
             "19 pages with 8-language i18n (incl. RTL Arabic)",
             "50+ B2B leads generated monthly from zero prior pipeline",
             "Built solo in 6 weeks",
@@ -33,10 +74,10 @@ export const projects: Project[] = [
             "Custom Puppeteer scraper for AuctionNinja with cron refresh",
             "Dynamic sitemap, JSON-LD structured data, GDPR geo-based consent",
         ],
-        businessImpact: "Contributed to $350K+ year-over-year revenue growth",
+        businessImpact: "Part of the LuxeSwap software suite that contributed to $350K+ year-over-year revenue growth",
         image: "/projects/luxeswap-hero.png",
         liveUrl: "https://luxeswap.com",
-        featured: true,
+        featured: false,
     },
     {
         id: "internal-crm",
@@ -67,7 +108,7 @@ export const projects: Project[] = [
         description:
             "Proprietary brand pricing index built from historical sales data. Cross-category median ratio computation with fuzzy matching and Levenshtein distance for brand deduplication across 1,021 brands.",
         metrics: [
-            "67,000+ sales analyzed",
+            "130K+ historical sales supporting the pricing engine",
             "1,021 brands classified into 4 tiers",
             "300+ brand aliases normalized",
             "9 analytics visualizations across 14 canonical categories",

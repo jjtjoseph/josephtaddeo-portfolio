@@ -6,7 +6,7 @@ import { projects } from "@/data/projects";
 export const metadata = {
     title: "Projects | Joseph Taddeo",
     description:
-        "Featured projects including full-stack websites, desktop automation tools, and data platforms.",
+        "MoFin lending intelligence, deal attribution, acquisition infrastructure, and LuxeSwap commerce and automation systems.",
 };
 
 export default function ProjectsPage() {
@@ -20,8 +20,8 @@ export default function ProjectsPage() {
                     <div className="max-w-3xl mb-12">
                         <h1 className="mb-6">Projects</h1>
                         <p className="text-xl text-[var(--color-text-muted)]">
-                            A selection of work spanning full-stack development, desktop
-                            automation, and data engineering.
+                            Software and data systems for real-estate finance and commerce,
+                            from borrower intelligence and deal attribution to pricing and automation.
                         </p>
                     </div>
 

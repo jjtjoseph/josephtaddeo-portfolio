@@ -2,6 +2,8 @@
 
 > **Purpose**: Complete data package for an agent to build/update josephtaddeo.com. All metrics are verified as of March 2026. Use this as the single source of truth.
 
+> Superseded for current positioning by `CONTENT_UPDATE_2026-09.md` and `src/data/`. This document preserves the March 2026 snapshot; MoFin is now the current employer and LuxeSwap ended April 2026.
+
 ---
 
 ## Contact & Links
