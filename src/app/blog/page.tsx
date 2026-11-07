@@ -26,8 +26,8 @@ export default function BlogPage() {
                         {posts.map((post) => (
                             <article key={post.slug} className="group">
                                 <Link href={`/blog/${post.slug}`} className="block">
-                                    <time className="text-sm text-[var(--color-text-subtle)]">
-                                        {new Date(post.date).toLocaleDateString("en-US", {
+                                    <time dateTime={post.updatedOn} className="text-sm text-[var(--color-text-subtle)]">
+                                        Updated {new Date(`${post.updatedOn}T12:00:00Z`).toLocaleDateString("en-US", {
                                             year: "numeric",
                                             month: "long",
                                             day: "numeric",

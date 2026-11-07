@@ -50,8 +50,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                         {/* Header */}
                         <header className="mb-12">
-                            <time className="text-sm text-[var(--color-text-subtle)]">
-                                {new Date(post.date).toLocaleDateString("en-US", {
+                            <time dateTime={post.updatedOn} className="text-sm text-[var(--color-text-subtle)]">
+                                Updated {new Date(`${post.updatedOn}T12:00:00Z`).toLocaleDateString("en-US", {
                                     year: "numeric",
                                     month: "long",
                                     day: "numeric",

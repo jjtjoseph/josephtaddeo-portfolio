@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import ExperienceCard from "@/components/ExperienceCard";
 import ContactForm from "@/components/ContactForm";
-import { projects } from "@/data/projects";
-import { experience, education, skills } from "@/data/experience";
+import { selectedProjects } from "@/data/projects";
+import { experience, education } from "@/data/experience";
 import { profile } from "@/data/profile";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
                     HERO SECTION
                     Full-height hero with Fraunces display name
                 ═══════════════════════════════════════════════════════════════ */}
-        <section id="hero" className="min-h-[90vh] flex items-center relative overflow-hidden">
+        <section id="hero" className="min-h-[70vh] py-16 flex items-center relative overflow-hidden">
           {/* Subtle radial gradient background */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -31,7 +31,7 @@ export default function Home() {
           <div className="container relative">
             <div className="max-w-4xl">
               <p className="text-[var(--color-accent)] text-sm uppercase tracking-[0.2em] mb-8 animate-fade-in section-label">
-                Software &amp; GTM Engineer · New York
+                Software &amp; Data Engineer · New York
               </p>
               <h1
                 className="text-5xl md:text-7xl lg:text-8xl mb-8 animate-fade-in hero-name"
@@ -80,6 +80,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="projects" className="py-20 bg-[var(--color-bg-elevated)]">
+          <div className="container">
+            {/* Section Header */}
+            <div className="flex items-baseline gap-4 mb-8">
+              <span className="text-6xl md:text-8xl font-light text-[var(--color-bg-subtle)]">01</span>
+              <h2 className="text-3xl md:text-4xl font-light">Selected Work</h2>
+            </div>
+            <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mb-16">
+              Lending intelligence, deal attribution, acquisition infrastructure,
+              and commerce software. The decisions and engineering behind each build.
+            </p>
+
+            <div className="grid gap-8 md:grid-cols-2">
+              {selectedProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+            <Link href="/projects" className="inline-flex mt-10 text-[var(--color-accent)] font-medium hover:underline">Explore all projects →</Link>
+          </div>
+        </section>
+
         {/* Gradient divider */}
         <div className="accent-line" />
 
@@ -87,11 +108,11 @@ export default function Home() {
                     ABOUT SECTION
                     Professional identity — no personal background
                 ═══════════════════════════════════════════════════════════════ */}
-        <section id="about" className="py-32">
+        <section id="about" className="py-20">
           <div className="container">
             {/* Section Header */}
             <div className="flex items-baseline gap-4 mb-16">
-              <span className="text-6xl md:text-8xl font-light text-[var(--color-bg-subtle)]">01</span>
+              <span className="text-6xl md:text-8xl font-light text-[var(--color-bg-subtle)]">02</span>
               <h2 className="text-3xl md:text-4xl font-light">About</h2>
             </div>
 
@@ -163,58 +184,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Skills Grid */}
-            <div className="mt-24">
-              <h3 className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-subtle)] mb-8 section-label">
-                Technical Skills
-              </h3>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {skills.map((category) => (
-                  <div key={category.name} className="p-5 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] rounded-xl">
-                    <h4 className="text-sm font-medium mb-3 text-[var(--color-accent)]">
-                      {category.name}
-                    </h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {category.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs text-[var(--color-text-muted)]"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Gradient divider */}
-        <div className="accent-line" />
-
-        {/* ═══════════════════════════════════════════════════════════════
-                    PROJECTS SECTION
-                    Featured work — metrics-forward
-                ═══════════════════════════════════════════════════════════════ */}
-        <section id="projects" className="py-32 bg-[var(--color-bg-elevated)]">
-          <div className="container">
-            {/* Section Header */}
-            <div className="flex items-baseline gap-4 mb-8">
-              <span className="text-6xl md:text-8xl font-light text-[var(--color-bg-subtle)]">02</span>
-              <h2 className="text-3xl md:text-4xl font-light">Projects</h2>
-            </div>
-            <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mb-16">
-              Lending intelligence, deal attribution, acquisition infrastructure,
-              and commerce software. The business problem behind each build.
-            </p>
-
-            <div className="grid gap-8 md:grid-cols-2">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
+            <Link href="/about" className="inline-flex mt-10 text-[var(--color-accent)] font-medium hover:underline">Background and technical skills →</Link>
           </div>
         </section>
 
@@ -225,7 +195,7 @@ export default function Home() {
                     EXPERIENCE SECTION
                     Professional timeline
                 ═══════════════════════════════════════════════════════════════ */}
-        <section id="experience" className="py-32">
+        <section id="experience" className="py-20">
           <div className="container">
             {/* Section Header */}
             <div className="flex items-baseline gap-4 mb-8">
@@ -251,7 +221,7 @@ export default function Home() {
                     CONTACT SECTION
                     Get in touch
                 ═══════════════════════════════════════════════════════════════ */}
-        <section id="contact" className="py-32 bg-[var(--color-bg-elevated)]">
+        <section id="contact" className="py-20 bg-[var(--color-bg-elevated)]">
           <div className="container">
             {/* Section Header */}
             <div className="flex items-baseline gap-4 mb-8">

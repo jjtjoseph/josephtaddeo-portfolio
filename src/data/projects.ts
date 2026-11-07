@@ -11,6 +11,8 @@ export interface Project {
     liveUrl?: string;
     githubUrl?: string;
     featured?: boolean;
+    caseStudySlug?: string;
+    imageAlt?: string;
 }
 
 export const projects: Project[] = [
@@ -23,17 +25,20 @@ export const projects: Project[] = [
         metrics: ["Historical deal reconstruction at scale", "Connected email, call, text, CRM, and underwriting records", "Stage-level signals for engineering, sales, and borrower evaluation"],
         highlights: ["Linked identifiable people and interactions across services", "Combined structured records with semantic and statistical analysis where needed", "Centralized record keeping and visibility into the deal lifecycle"],
         businessImpact: "Made fragmented deal histories traceable and usable for evaluation across teams",
-        featured: true,
+        featured: false,
     },
     {
         id: "mofin-intelligence",
         title: "Borrower & Lending Intelligence",
         type: "MoFin · Proprietary analytics platform",
         tech: ["Python", "SQL", "PostgreSQL", "ETL", "Entity Resolution", "Web Scraping"],
-        description: "Combined SFRA and Forecasa records with Zillow market data, FRED mortgage-rate history, and internal borrower and loan-performance datasets. Built the processing and analysis that turn these sources into borrower-fit and financing-demand signals.",
-        metrics: ["Hundreds of thousands of borrowers processed", "External market data joined with internal historical performance", "Product rules and transaction patterns translated into outreach priorities"],
+        description: "Built a canonical borrower and loan data platform across vendor, property, CRM and operating records. Field-level provenance, entity resolution and repeatable data rebuilds.",
+        metrics: ["Hundreds of thousands of borrowers processed", "Corrected over 100,000 loan-status records", "Transaction-based mortgage reconstruction for borrower targeting"],
         highlights: ["Resolved related borrower entities", "Reconstructed mortgage and transaction histories", "Built models of borrower fit and financing demand"],
-        businessImpact: "Gave sales a basis for identifying whom to contact, why, and when",
+        businessImpact: "Turned conflicting source records into traceable financing signals",
+        caseStudySlug: "lending-data-platform",
+        image: "/projects/lending-data-flow.svg",
+        imageAlt: "Conceptual flow from source records through reconciliation to financing signals",
     },
     {
         id: "mofin-outreach",
@@ -47,13 +52,16 @@ export const projects: Project[] = [
     },
     {
         id: "mofin-web",
-        title: "Lending Website & Financial Tools",
+        title: "Lending Website & Visual CMS",
         type: "MoFin · Web development and quality engineering",
         tech: ["Next.js", "React", "TypeScript", "Airtable", "Playwright", "Vitest"],
-        description: "Rebuilt the company’s Webflow site in Next.js and React, implementing financial calculators and validated lead capture. Added automated checks to preserve lending calculations, content, and interactions as the site changes.",
+        description: "Launched the lending website with financial calculators and lead capture, then built a visual CMS for business users. Authenticated in-page editing, versioned publishing, undo history and real-time collaboration.",
         metrics: ["Financial calculators with testable business logic", "Validated lead capture connected to Airtable", "Automated content, visual, and interaction checks"],
         highlights: ["Translated lending requirements into customer-facing tools", "Built regression checks for the migration", "Connected lead intake to the broader operations workflow"],
-        businessImpact: "Built a maintainable customer-facing foundation for lending inquiries",
+        businessImpact: "Gave business users a visual workflow for maintaining site content",
+        caseStudySlug: "visual-content-platform",
+        image: "/projects/visual-cms-flow.svg",
+        imageAlt: "Conceptual flow from authenticated editing through versioned publishing to site content",
     },
     {
         id: "luxeswap-website",
@@ -65,7 +73,7 @@ export const projects: Project[] = [
         metrics: [
             "Live inventory integration and B2B acquisition",
             "19 pages with 8-language i18n (incl. RTL Arabic)",
-            "50+ B2B leads generated monthly from zero prior pipeline",
+            "30+ qualified B2B inquiries monthly and 500+ cumulative form submissions.",
             "Built solo in 6 weeks",
         ],
         highlights: [
@@ -130,18 +138,18 @@ export const projects: Project[] = [
         description:
             "AI-powered desktop app that automates eBay listing creation. Deployed as self-updating macOS app — CEO trained and operates independently in daily production use.",
         metrics: [
-            "26,000+ items processed annually",
+
             "95% time reduction (10 min → 30 sec per item)",
             "$250K+ annual revenue enabled",
-            "~1.5–2 FTE equivalent saved",
+
         ],
         highlights: [
             "AI classification using sentence-transformer embeddings",
             "77+ categories via word-boundary regex matching",
             "Self-updating macOS app with GitHub release detection",
-            "CEO operates independently — zero ongoing support needed",
+            "Packaged a self-updating macOS application for daily business use",
         ],
-        businessImpact: "Saves ~1.5–2 full-time employees of manual listing work",
+        businessImpact: "Cut listing preparation from 10 minutes to 30 seconds per item",
         image: "/projects/EZ-Lister-interface.png",
     },
     {
@@ -184,3 +192,5 @@ export const projects: Project[] = [
         image: "/projects/capstone.png",
     },
 ];
+
+export const selectedProjects = ["mofin-web", "mofin-intelligence", "ez-lister", "luxeswap-website"].map((id) => projects.find((project) => project.id === id)!);

@@ -22,7 +22,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 <div className={`relative overflow-hidden ${isFeatured ? "aspect-[2.4/1]" : "aspect-video"}`}>
                     <Image
                         src={project.image}
-                        alt={`${project.title} screenshot`}
+                        alt={project.imageAlt ?? `${project.title} screenshot`}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -92,8 +92,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 )}
 
                 {/* Links */}
-                {(project.liveUrl || project.githubUrl) && (
+                {(project.caseStudySlug || project.liveUrl || project.githubUrl) && (
                 <div className="flex gap-4 pt-4 border-t border-[var(--color-border)] mt-auto">
+                    {project.caseStudySlug && (
+                        <Link href={`/projects/${project.caseStudySlug}`} className="text-sm text-[var(--color-accent)] font-medium hover:underline">Read case study →</Link>
+                    )}
                     {project.liveUrl && (
                         <Link
                             href={project.liveUrl}
