@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
@@ -23,6 +24,7 @@ export default function ProjectsPage() {
                             Software and data systems for real-estate finance and commerce,
                             from borrower intelligence and deal attribution to pricing and automation.
                         </p>
+                        <Link href="/design" className="inline-block mt-4 text-[var(--color-accent)] underline underline-offset-4">View the frontend design gallery</Link>
                     </div>
 
                     {/* Projects Grid */}

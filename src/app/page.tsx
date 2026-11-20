@@ -80,6 +80,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section aria-labelledby="frontend-design" className="container pb-16">
+          <Link href="/design" className="group block border-t border-[var(--color-border-hover)] pt-6">
+            <div className="flex items-baseline justify-between gap-4 mb-5">
+              <h2 id="frontend-design" className="text-3xl md:text-4xl">Frontend design</h2>
+              <span className="text-sm underline underline-offset-4 text-[var(--color-accent)]">View gallery</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-4">
+              {[
+                ["sunfloat-albums", "Sunfloat Studios"],
+                ["luxeswap-trophy-grid", "LuxeSwap"],
+                ["mofin-calculator", "MoFin Lending"],
+              ].map(([image, name]) => <figure key={image}>
+                <Image src={`/design/${image}-preview.webp`} width={480} height={300} unoptimized
+                  alt="" className="w-full rounded-md border border-[var(--color-border-hover)]" />
+                <figcaption className="mt-2 text-sm text-[var(--color-text-muted)]">{name}</figcaption>
+              </figure>)}
+            </div>
+          </Link>
+        </section>
+
         <section id="projects" className="py-20 bg-[var(--color-bg-elevated)]">
           <div className="container">
             {/* Section Header */}
