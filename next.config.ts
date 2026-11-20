@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   async headers() {
     return ['/apartments/:path*', '/api/apartments/:path*'].map(source => ({source,headers:[
       {key:'X-Robots-Tag',value:'noindex, nofollow, noarchive'},

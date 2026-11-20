@@ -5,6 +5,7 @@ import {version} from 'maplibre-gl/package.json';
 import {Apartment,activity,wasVisited} from '@/lib/apartments/model';
 import styles from './tracker.module.css';
 import UnavailableBadge from './UnavailableBadge';
+import {showNeighborhoods} from './neighborhoodOverlay';
 import {showSubway} from './subwayOverlay';
 // Adapted from Velocity's vector-map.ts: MapLibre + OpenFreeMap Positron.
 type LocatedApartment = Apartment & {lat:number; lng:number};
@@ -26,7 +27,11 @@ function shadeOutsideSearch(view: VectorMap) {
 }
 export default function ApartmentMap({apartments,selected,onSelect,fit}:{apartments:Apartment[];selected:string|null;onSelect:(id:string)=>void;fit:number}){
  const host=useRef<HTMLDivElement>(null),map=useRef<VectorMap|null>(null),markers=useRef<Marker[]>([]),select=useRef(onSelect);const [ready,setReady]=useState(false),[error,setError]=useState('');
- const [subway, setSubway] = useState(false);
+ const [subway, setSubway] = useState(true);
+ const [neighborhoods,setNeighborhoods] = useState(false);
+ useEffect(() => {
+   if (ready && map.current) showNeighborhoods(map.current,neighborhoods);
+ }, [ready,neighborhoods]);
  useEffect(() => {
    if (ready && map.current) showSubway(map.current,subway);
  }, [ready,subway]);
@@ -120,10 +125,32 @@ export default function ApartmentMap({apartments,selected,onSelect,fit}:{apartme
    return () => { cancelled=true; cleanup(); };
  }, [apartments,selected,ready]);
  useEffect(()=>{if(!ready||!map.current||!selected)return;const a=apartments.find(x=>x.id===selected);if(a?.lat!=null&&a.lng!=null)map.current.easeTo({center:[a.lng,a.lat],zoom:Math.max(map.current.getZoom(),13),duration:matchMedia('(prefers-reduced-motion: reduce)').matches?0:450});},[selected,ready,apartments]);
- useEffect(()=>{if(!ready||!map.current)return;const pts=apartments.filter(a=>a.lat!==null&&a.lng!==null);if(!pts.length)return;map.current.fitBounds([[Math.min(...pts.map(a=>a.lng!)),Math.min(...pts.map(a=>a.lat!))],[Math.max(...pts.map(a=>a.lng!)),Math.max(...pts.map(a=>a.lat!))]],{padding:65,maxZoom:14,duration:0});/* Fit only on explicit request / first load. */
- // eslint-disable-next-line react-hooks/exhaustive-deps
- },[fit,ready]);
- return <div className={styles.mapHost}><div ref={host} className={styles.canvas} aria-label="Apartment locations"/><button type="button" className={styles.subwayToggle} disabled={!ready} aria-pressed={subway} onClick={()=>setSubway(!subway)}>Subway</button><dialog ref={picker} className={styles.mapPicker} aria-label="Choose an apartment" onClose={()=>setChoices([])}>
+ useEffect(() => {
+   const view = map.current;
+   if (!view || !ready) return;
+   const points = apartments.filter((a): a is LocatedApartment => a.lat !== null && a.lng !== null);
+   if (!points.length) return;
+   function fitVisibleMap() {
+     if (!view) return false;
+     const {clientWidth: width, clientHeight: height} = view.getContainer();
+     if (!width || !height) return false;
+     view.resize();
+     view.fitBounds([
+       [Math.min(...points.map(a=>a.lng)),Math.min(...points.map(a=>a.lat))],
+       [Math.max(...points.map(a=>a.lng)),Math.max(...points.map(a=>a.lat))],
+     ], {padding:Math.min(65,width/5,height/5),maxZoom:14,duration:0});
+     return true;
+   }
+   if (fitVisibleMap()) return;
+   // Filters can change from list view while the map has no layout dimensions.
+   const observer = new ResizeObserver(() => { if (fitVisibleMap()) observer.disconnect(); });
+   observer.observe(view.getContainer());
+   return () => observer.disconnect();
+   // Preserve the current camera unless the user filters, fits or first opens the map.
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, [fit,ready]);
+ return <div className={styles.mapHost}><div ref={host} className={styles.canvas} aria-label="Apartment locations"/><div className={styles.mapLayers}><button type="button" className={styles.subwayToggle} disabled={!ready} aria-pressed={subway} onClick={()=>setSubway(!subway)}>Subway</button>
+   <button type="button" className={styles.subwayToggle} disabled={!ready} aria-pressed={neighborhoods} onClick={()=>setNeighborhoods(!neighborhoods)}>Neighborhoods</button></div><dialog ref={picker} className={styles.mapPicker} aria-label="Choose an apartment" onClose={()=>setChoices([])}>
    <header><strong>{choices.length} apartments</strong><button type="button" className={styles.secondary} onClick={()=>picker.current?.close()}>Close</button></header>
    <ul>{choices.map(a=><li key={a.id}><button type="button" onClick={()=>{picker.current?.close();select.current(a.id);}}>
      <span>{a.status==='Unavailable'&&<UnavailableBadge/>}{addressLabel(a)} {a.fromKarina&&<b className={styles.kBadge} aria-label="Shared by Karina">K</b>}</span>
