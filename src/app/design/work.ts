@@ -16,7 +16,7 @@ function capture(file: string, label: string, alt: string, caption: string, heig
 export const studies: Study[] = [
   {
     id: "sunfloat", name: "Sunfloat Studios", category: "Photography portfolio",
-    description: "Each album starts as a strip of photographs. Expanding it gives the series its own layout, with room for both portrait and landscape frames. Visitors can return to the same album and keep browsing.",
+    description: "Sunfloat Studios is a collaboration between my fiancée, Karina Solomyana, and me. Each album starts as a strip of photographs and expands into a layout that gives portrait and landscape frames room to breathe.",
     links: [{ href: "https://www.sunfloatstudios.com/photographers/karina-solomyana", label: "Visit the portfolio" }],
     screens: [
       capture("sunfloat-albums", "Album index", "A monochrome photo series in a horizontal strip beneath the portfolio filters.", "Album index with category filters. Photography by Karina Solomyana."),

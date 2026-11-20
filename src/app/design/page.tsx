@@ -19,7 +19,7 @@ export default function DesignPage() {
     <main className="container">
       <header className={styles.intro}>
         <h1>Frontend design</h1>
-        <p>Interfaces I’ve built for browsing photographs, shopping for a designer piece, comparing loan scenarios and working with research data.</p>
+        <p>Every project shown here has a working interface. All screenshots are real, unedited browser captures. None are AI-generated.</p>
       </header>
       <nav className={styles.index} aria-label="Design projects">
         {studies.map(study => <a key={study.id} href={`#${study.id}`}>{study.name}</a>)}
