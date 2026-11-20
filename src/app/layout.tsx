@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Outfit, JetBrains_Mono, Fraunces, Manrope } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import SiteAnalytics from "@/components/SiteAnalytics";
 import "./globals.css";
 import { profile } from "@/data/profile";
 
@@ -115,7 +115,7 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${outfit.variable} ${jetbrainsMono.variable} ${fraunces.variable} ${manrope.variable} antialiased`}
       >
         {children}
-        <Analytics />
+        <SiteAnalytics />
       </body>
     </html>
   );

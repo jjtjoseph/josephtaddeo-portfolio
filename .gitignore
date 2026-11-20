@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Private apartment data and local access credentials
+/.private/
+
+/public/maps/
