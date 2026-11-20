@@ -28,7 +28,7 @@ function shadeOutsideSearch(view: VectorMap) {
 export default function ApartmentMap({apartments,selected,onSelect,fit}:{apartments:Apartment[];selected:string|null;onSelect:(id:string)=>void;fit:number}){
  const host=useRef<HTMLDivElement>(null),map=useRef<VectorMap|null>(null),markers=useRef<Marker[]>([]),select=useRef(onSelect);const [ready,setReady]=useState(false),[error,setError]=useState('');
  const [subway, setSubway] = useState(true);
- const [neighborhoods,setNeighborhoods] = useState(false);
+ const [neighborhoods,setNeighborhoods] = useState(true);
  useEffect(() => {
    if (ready && map.current) showNeighborhoods(map.current,neighborhoods);
  }, [ready,neighborhoods]);
